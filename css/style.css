@@ -2,13 +2,14 @@ body {
   font-family: "DotGothic16", system-ui;
   align-items: center;
   color: #454545;
+  font-size: 24px;
 }
 
 .titlefont {
   font-family: "Press Start 2P", system-ui;
   font-weight: 400;
   text-align: center;
-  font-size: 52px;
+  font-size: 44px;
   margin-top: 3%;
 }
 
@@ -68,4 +69,10 @@ body {
   border-color: #454545;
   box-shadow: 12px 12px rgba(0, 0, 0, 0.2);
   background-color: white;
+}
+
+.infinitynikkimaincontainer {
+  margin: 2%;
+  margin-top: 3%;
+  padding: 0.5%;
 }
