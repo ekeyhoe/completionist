@@ -1,24 +1,71 @@
 body {
-  background-color: #1e2124;
-  color: white;
-  font-family: "Funnel Sans", sans-serif;
+  font-family: "DotGothic16", system-ui;
   align-items: center;
+  color: #454545;
 }
 
-#gamecontainer {
-  display: inline-block;
-  padding: 20px;
-  background-color: #1e2124;
+.titlefont {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  text-align: center;
+  font-size: 52px;
+  margin-top: 3%;
+}
+
+#header {
+  position: relative;
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.gamecontainer {
+  width: 25%;
+  height: 25%;
+  padding: 30px;
+  background-color: transparent;
   border: none;
 }
 
-#gameimage {
-  width: 300px;
+.gameimage {
+  width: 100%;
   border-radius: 16px;
-  box-shadow: 12px 12px #16181b;
+  border-style: solid;
+  border-color: #454545;
+  box-shadow: 12px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+  background-color: white;
+  cursor: pointer;
 }
 
-#gameimage:hover {
+.gameimage:hover {
   transform: translateY(12px) translateX(12px);
-  box-shadow: 0px 0px;
+}
+
+.backbutton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  padding-left: 2%;
+  font-family: "DotGothic16", system-ui;
+  font-weight: 400;
+  font-size: 100px;
+  background-color: transparent;
+  border: none;
+  line-height: 1;
+  display: inline-flex;
+  color: #454545;
+}
+
+.sitecontainer {
+  border-radius: 16px;
+  border-style: solid;
+  border-color: #454545;
+  box-shadow: 12px 12px rgba(0, 0, 0, 0.2);
+  background-color: white;
 }
