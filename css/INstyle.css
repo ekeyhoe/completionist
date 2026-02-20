@@ -1,0 +1,49 @@
+.INmaincontainer {
+  margin: 2%;
+  margin-top: 3%;
+  padding: 0.5%;
+}
+
+.sitecontainer {
+  /*box to look like a site that emcompasses each table*/
+  align-items: center;
+  width: 20%;
+
+  padding: 1%;
+}
+
+.table-heading {
+  text-align: center;
+  transform: translateY(-15%);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center; /* centers text in cells by default */
+}
+
+.table thead th {
+  padding-bottom: 8%;
+}
+
+.colour-icon {
+  margin: 5%;
+  width: 30%;
+  vertical-align: middle; /* aligns image with checkbox */
+}
+
+.eureka-button {
+  background-color: transparent;
+  border: none;
+  margin-top: -24%;
+}
+
+.eureka-icon {
+  width: 100%;
+  cursor: pointer;
+}
+
+.active {
+  background: black;
+}
