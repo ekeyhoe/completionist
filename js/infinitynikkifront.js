@@ -26,6 +26,14 @@ function createEurekaTable(title, colours, containerId) {
 
   // ----- Table Title -----
   const heading = document.createElement("h2");
+  // Capitalising title
+  if (title.indexOf(" ") != -1) {
+    const spaceIndex = title.indexOf(" ");
+    title =
+      title.slice(0, spaceIndex + 1) +
+      title.charAt(spaceIndex + 1).toUpperCase() +
+      title.slice(spaceIndex + 2);
+  }
   heading.textContent = title;
   heading.classList.add("table-heading");
   wrapper.appendChild(heading);
@@ -62,7 +70,9 @@ function createEurekaTable(title, colours, containerId) {
     // ----- Item Buttons -----
     ["head", "hands", "feet"].forEach((part) => {
       const cell = document.createElement("td");
-      const key = `${title}-${part}-${colour}`.toLowerCase();
+      const key = `${title}-${part}-${colour}`
+        .toLowerCase()
+        .replace(/\s+/g, "");
 
       // Ensure the key exists in savedState
       if (savedState[key] === undefined) savedState[key] = false;
@@ -97,9 +107,27 @@ function createEurekaTable(title, colours, containerId) {
   parent.appendChild(wrapper);
 }
 
-// ----- First render -----
-createEurekaTable(
-  "Afterglow",
-  ["yellow", "green", "red", "pink", "iridescent"],
-  "#table1",
-);
+function getEurekaData(rownumber) {
+  fetch("data/eurekadata.csv")
+    .then((res) => res.text())
+    .then((text) => {
+      const chosenrow = text.trim().split("\n")[rownumber];
+
+      // Split CSV safely
+      const parts = chosenrow.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+      const name = parts[0];
+      const colours = parts[1]
+        .replace(/"/g, "")
+        .split(",")
+        .map((c) => c.trim());
+
+      // Manual call using CSV data
+      createEurekaTable(
+        name.charAt(0).toUpperCase() + name.slice(1),
+        colours,
+        "#table1",
+      );
+    });
+}
+
+getEurekaData(4);

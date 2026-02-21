@@ -45,5 +45,5 @@
 }
 
 .active {
-  background: black;
+  background: black; /*temp to check if local storage is working*/
 }
