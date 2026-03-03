@@ -16,10 +16,6 @@ function createEurekaTable(title, colours, containerId) {
   // ----- Load previous state from localStorage -----
   let savedState = JSON.parse(localStorage.getItem("eurekaTableState") || "{}");
 
-  // ----- Remove previous table if exists -----
-  const oldWrapper = parent.querySelector(".sitecontainer");
-  if (oldWrapper) parent.removeChild(oldWrapper);
-
   // ----- Create table wrapper -----
   const wrapper = document.createElement("div");
   wrapper.classList.add("sitecontainer");
@@ -107,7 +103,7 @@ function createEurekaTable(title, colours, containerId) {
   parent.appendChild(wrapper);
 }
 
-function getEurekaData(rownumber) {
+function getEurekaData(rownumber, tablenumber) {
   fetch("data/eurekadata.csv")
     .then((res) => res.text())
     .then((text) => {
@@ -125,9 +121,19 @@ function getEurekaData(rownumber) {
       createEurekaTable(
         name.charAt(0).toUpperCase() + name.slice(1),
         colours,
-        "#table1",
+        `#table${tablenumber}`,
       );
     });
 }
 
-getEurekaData(4);
+function tablePlacement() {
+  let counter = 0;
+  for (let j = 0; j < 7; j++) {
+    for (let i = counter; i < counter + 6; i++) {
+      getEurekaData(i, j + 1);
+    }
+    counter = counter + 6;
+  }
+}
+
+tablePlacement();
